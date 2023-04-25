@@ -31,8 +31,8 @@ test:
   ## TODO re-enable pytest when pygments >=2.12 is available.
   # source_files:
   #   - tests
-  # requires:
-  #   - pip
+  requires:
+    - pip
   #   - pytest
   #   - pygments >=2.12
   imports:
