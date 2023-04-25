@@ -24,8 +24,6 @@ requirements:
     - markdown >=3.2
     - pyyaml
     - python
-    # 
-    
 
 test:
   ## TODO re-enable pytest when pygments >=2.12 is available.
