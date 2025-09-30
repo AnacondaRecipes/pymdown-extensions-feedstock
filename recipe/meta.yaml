@@ -1,29 +1,30 @@
 {% set name = "pymdown-extensions" %}
-{% set version = "9.11" %}
+{% set version = "10.16.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pymdown_extensions-{{ version }}.tar.gz
-  sha256: f7e86c1d3981f23d9dc43294488ecb54abadd05b0be4bf8f0e15efc90f7853ff
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pymdown_extensions-{{ version }}.tar.gz
+  sha256: aace82bcccba3efc03e25d584e6a22d27a8e17caa3f4dd9f207e49b787aa9a91
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed -vv
-  skip: true  # [py<37]
+  skip: true  # [py<39]
 
 requirements:
   host:
     - pip
     - python
-    - wheel
     - hatchling >=0.21.1
   run:
-    - markdown >=3.2
+    - markdown >=3.6
     - pyyaml
     - python
+  run_constrained:
+    - Pygments >=2.19.1
 
 test:
   ## TODO re-enable pytest when pygments >=2.12 is available.
@@ -46,9 +47,9 @@ about:
   license_file: LICENSE.md
   summary: Extension pack for Python Markdown.
   description: |
-    PyMdown Extensions is a collection of extensions for Python Markdown. 
-    They were originally written to make writing documentation more enjoyable. 
-    They cover a wide range of solutions, and while not every extension 
+    PyMdown Extensions is a collection of extensions for Python Markdown.
+    They were originally written to make writing documentation more enjoyable.
+    They cover a wide range of solutions, and while not every extension
     is needed by all people, there is usually at least one useful extension for everybody.
   doc_url: https://facelessuser.github.io/pymdown-extensions/
   dev_url: https://github.com/facelessuser/pymdown-extensions
