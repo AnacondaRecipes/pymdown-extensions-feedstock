@@ -20,25 +20,36 @@ requirements:
     - python
     - hatchling >=0.21.1
   run:
+    - python
     - markdown >=3.6
     - pyyaml
-    - python
   run_constrained:
-    - Pygments >=2.19.1
+    - pygments >=2.19.1
 
 test:
-  ## TODO re-enable pytest when pygments >=2.12 is available.
-  # source_files:
-  #   - tests
-  requires:
-    - pip
-  #   - pytest
-  #   - pygments >=2.12
+  source_files:
+    - tests
   imports:
     - pymdownx
+    - pymdownx.arithmatex
+    - pymdownx.blocks
+    - pymdownx.blocks.admonition
+    - pymdownx.blocks.block
+    - pymdownx.blocks.details
+    - pymdownx.blocks.html
+    - pymdownx.emoji
+    - pymdownx.inlinehilite
+    - pymdownx.slugs
+    - pymdownx.snippets
+    - pymdownx.superfences
+  requires:
+    - pip
+    - pytest
+    - pygments >=2.19.1
   commands:
     - pip check
-    # - pytest
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    - pytest -v tests
 
 about:
   home: https://github.com/facelessuser/pymdown-extensions
@@ -51,7 +62,7 @@ about:
     They were originally written to make writing documentation more enjoyable.
     They cover a wide range of solutions, and while not every extension
     is needed by all people, there is usually at least one useful extension for everybody.
-  doc_url: https://facelessuser.github.io/pymdown-extensions/
+  doc_url: https://facelessuser.github.io/pymdown-extensions
   dev_url: https://github.com/facelessuser/pymdown-extensions
 
 extra:
